@@ -1,0 +1,76 @@
+// Entire Job Container Styles
+.container {
+    display: flex;
+    padding: 6rem;
+    gap: 2rem;
+
+    height: 100vh;
+}
+
+// Left Column - Job List
+
+.jobList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-right: 1px solid #ccc;
+
+    width: 30%;
+}
+
+.jobCard {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+}
+
+// Right Column - Job Details
+.jobDetails {
+    position: fixed;
+    right: 6rem; // same padding as container to align properly
+    top: 6rem;   // same top padding
+
+    width: 60%;
+    height: calc(100vh - 12rem);
+
+    overflow-y: auto;
+    background-color: #fafafa;
+    padding: 1rem;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+
+    ul, ol {
+        padding-left: 2rem; // Adjust as needed for indentation
+        margin-bottom: 1rem;
+    }
+}
+
+.jobDetails:hover {
+    z-index: 10;
+}
+
+.url {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff; // Bootstrap blue
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+  
+    border: none;
+    border-radius: 2rem;
+  
+    transition: background-color 0.3s ease;
+    margin-bottom: 1.5rem;
+  
+    &:hover {
+      background-color: #0056b3;
+      text-decoration: none;
+    }
+  }
+  
