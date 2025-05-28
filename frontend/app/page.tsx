@@ -1,9 +1,28 @@
 import { fetchJobs } from '@/lib/fetchJobs';
 import JobsContainer from "@/components/JobContainer";
+import { Job } from '@/types/Job';
+
+interface Props {
+  jobs: Job[];
+  totalJobs: number;
+  currentPage: number;
+  totalPages: number;
+}
 
 export default async function HomePage() {
-  const fetchedJobs = await fetchJobs();
-  return <JobsContainer jobs={fetchedJobs} />;
+  const { jobs, totalJobs, totalPages, currentPage } = await fetchJobs();
+  // console.log('Fetched jobs:', jobs);
+  // console.log('Total jobs:', totalJobs);
+  // console.log('Current page:', currentPage);
+  // console.log('Total pages:', totalPages);
+  return (
+    <JobsContainer
+      jobs={jobs}
+      totalJobs={totalJobs}
+      currentPage={currentPage}
+      totalPages={totalPages}
+    />
+  );
 }
 
 /*

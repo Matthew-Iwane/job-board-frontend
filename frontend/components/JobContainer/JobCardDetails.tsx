@@ -1,6 +1,8 @@
 import { Job } from '@/types/Job';
 import styles from './JobContainer.module.scss';
 
+import DOMPurify from 'isomorphic-dompurify';
+
 interface Props {
     job: Job | null;
 }
@@ -14,11 +16,14 @@ export default function JobDetails({ job }: Props) {
         )
     }
 
+    const cleanHTML = DOMPurify.sanitize(job.description);
+
     return (
         <div className={styles.jobDetails}>
             <a className={styles.url} href={job.url} target="_blank" rel="noopener noreferrer">Apply Now </a>
-            <p><strong>Company:</strong> {job.company}</p>
-            <div dangerouslySetInnerHTML={{ __html: job.description }} />
+            <h1>{job.company}</h1>
+            <h2>{job.jobid}</h2>
+            <div dangerouslySetInnerHTML={{ __html: cleanHTML }} />
             <a className={styles.url} href={job.url} target="_blank" rel="noopener noreferrer">Apply Now </a>
         </div>
     );

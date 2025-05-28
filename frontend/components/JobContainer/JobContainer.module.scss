@@ -29,6 +29,26 @@
     cursor: pointer;
 }
 
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .activePage {
+    background-color: #0070f3;
+    color: white;
+    border-color: #0070f3;
+  }
+
 // Right Column - Job Details
 .jobDetails {
     position: fixed;
