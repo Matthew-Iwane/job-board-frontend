@@ -8,9 +8,6 @@ import Pagination from './Pagination';
 
 import styles from './JobContainer.module.scss';
 
-import { fetchJobs } from '@/lib/fetchJobs';
-import { getPaginationRange } from '@/lib/getPaginationRange';
-
 
 interface Props {
   jobs: Job[];
@@ -29,7 +26,8 @@ export default function JobsContainer({ jobs, totalJobs, totalPages, currPage }:
   useEffect(() => {
     const loadJobs = async () => {
       try {
-        const data = await fetchJobs(currentPage, 10);
+        const res = await fetch(`/api/jobs?page=${currentPage}&limit=${10}`);  
+        const data = await res.json();   
 
         setFetchedJobs(data.jobs);
         setSelectedJob(data.jobs[0] || null);
