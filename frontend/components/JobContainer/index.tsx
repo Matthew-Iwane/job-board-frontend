@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import { Job } from '@/types/Job';
 import JobsList from './JobCardList';
 import JobDetails from './JobCardDetails';
+import Pagination from './Pagination';
 
 import styles from './JobContainer.module.scss';
 
-import {fetchJobs} from '@/lib/fetchJobs';
+import { fetchJobs } from '@/lib/fetchJobs';
+import { getPaginationRange } from '@/lib/getPaginationRange';
+
 
 interface Props {
   jobs: Job[];
@@ -22,8 +25,6 @@ export default function JobsContainer({ jobs, totalJobs, totalPages, currPage }:
   const [selectedJob, setSelectedJob] = useState<Job | null>(jobs[0] || null);
   const [currentPage, setCurrentPage] = useState(currPage || 1);
   const [fetchedJobs, setFetchedJobs] = useState<Job[]>(jobs);
-
-  const limit = 10
 
   useEffect(() => {
     const loadJobs = async () => {
@@ -40,39 +41,24 @@ export default function JobsContainer({ jobs, totalJobs, totalPages, currPage }:
     loadJobs();
   }, [currentPage]);
 
+
   return (
     <div className={styles.container}>
       <div className="joblist-container">
-        <JobsList 
-          jobs={fetchedJobs} 
+        <JobsList
+          jobs={fetchedJobs}
           totalJobs={totalJobs}
           totalPages={totalPages}
           currentPage={currentPage}
-          onSelectJob={setSelectedJob} 
+          onSelectJob={setSelectedJob}
         />
 
-        <div className={styles.pagination}>
-          <button onClick={() => setCurrentPage(p => Math.max(p - 1, 1))} disabled={currentPage === 1}>
-            Previous
-          </button>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
 
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentPage(i + 1)}
-              style={{ fontWeight: currentPage === i + 1 ? 'bold' : 'normal' }}
-            >
-              {i + 1}
-            </button>
-          ))}
-
-          <button 
-            onClick={() => setCurrentPage(p => Math.min(p + 1, totalPages))} 
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div>
       </div>
 
 
