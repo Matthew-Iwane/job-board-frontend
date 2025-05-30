@@ -5,12 +5,12 @@ import { Job } from '@/types/Job';
 interface Props {
   jobs: Job[];
   totalJobs: number;
-  currentPage: number;
+  currPage: number;
   totalPages: number;
 }
 
 export default async function HomePage() {
-  const { jobs, totalJobs, totalPages, currentPage } = await fetchJobs();
+  const { jobs, totalJobs, totalPages, currPage } = await fetchJobs();
   // console.log('Fetched jobs:', jobs);
   // console.log('Total jobs:', totalJobs);
   // console.log('Current page:', currentPage);
@@ -19,7 +19,7 @@ export default async function HomePage() {
     <JobsContainer
       jobs={jobs}
       totalJobs={totalJobs}
-      currentPage={currentPage}
+      currPage={currPage}
       totalPages={totalPages}
     />
   );
