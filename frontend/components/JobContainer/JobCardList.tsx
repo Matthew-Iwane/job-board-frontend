@@ -4,23 +4,17 @@ import styles from './JobContainer.module.scss';
 
 interface Props {
   jobs: Job[];
-  totalJobs: number;
-  totalPages: number;
-  currentPage: number;
   onSelectJob: (job: Job) => void;
 }
 
-export default function JobCardList({ jobs, totalJobs, totalPages, currentPage, onSelectJob }: Props) {
-  // console.log("Total Jobs:", totalJobs);
-  // console.log("Total Pages:", totalPages);
-  // console.log("Current Page:", currentPage);
-
+export default function JobCardList({ jobs, onSelectJob }: Props) {
+  // console.log(jobs.forEach(job => console.log('Job:', job.title, 'ID:', job.jobid)));
 
   return (
     <ul className={styles.jobList}>
       
       {jobs.map((job) => (
-        <li key={job.jobid} onClick={() => onSelectJob(job)}>
+        <li key={job.jobid || job._id} onClick={() => onSelectJob(job)}>
           <JobCard job={job} />
         </li>
       ))}

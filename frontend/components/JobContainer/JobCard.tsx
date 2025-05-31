@@ -8,7 +8,7 @@ interface JobCardProps {
 
 const JobCard: React.FC<JobCardProps> = ({ job }) => {
     return (
-        <div className={styles.jobCard} key={job.jobid}>
+        <div className={styles.jobCard}>
             {/* <h1>{job.company}</h1> */}
             <h3>{job.title}</h3>
             {/* <p>{job.jobid}</p> */}

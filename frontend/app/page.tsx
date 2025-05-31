@@ -13,9 +13,10 @@ export default async function HomePage() {
   const { jobs, totalJobs, totalPages, currPage } = await fetchJobs();
   // console.log('Fetched jobs:', jobs);
   // console.log('Total jobs:', totalJobs);
-  // console.log('Current page:', currentPage);
+  // console.log('Current page:', currPage);
   // console.log('Total pages:', totalPages);
   return (
+    
     <JobsContainer
       jobs={jobs}
       totalJobs={totalJobs}

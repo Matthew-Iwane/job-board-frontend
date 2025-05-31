@@ -4,7 +4,7 @@ import { fetchJobs } from '@/lib/fetchJobs';
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
 
-  console.log(searchParams.toString());
+  // console.log(searchParams.toString());
 
   const page = searchParams.get('page') || '1';
   const limit = searchParams.get('limit') || '10';

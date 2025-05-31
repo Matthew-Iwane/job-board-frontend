@@ -1,4 +1,5 @@
 export interface Job {
+  _id?: string, // Optional for MongoDB documents
   jobid: string,
   title: string,
   company: string,
