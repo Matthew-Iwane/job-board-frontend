@@ -24,7 +24,6 @@ export default function JobsContainer({ jobs, totalJobs, totalPages, currPage }:
   const [fetchedJobs, setFetchedJobs] = useState<Job[]>(jobs);
   const hasFetchedOnce = useRef(false);
 
-
   useEffect(() => {
 
     // I fetched jobs on first render on the server-side so I don't want to double fetch

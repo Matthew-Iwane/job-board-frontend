@@ -16,15 +16,16 @@ export default function JobDetails({ job }: Props) {
         )
     }
 
+    // console.log('Job Details:', job);
+
     const cleanHTML = DOMPurify.sanitize(job.description);
 
     return (
         <div className={styles.jobDetails}>
-            <a className={styles.url} href={job.url} target="_blank" rel="noopener noreferrer">Apply Now </a>
+            <a className={styles.url} href={job.url} target="_blank" rel="noopener noreferrer">Apply Now</a>
             <h1>{job.company}</h1>
-            <h2>{job.jobid}</h2>
+            {/* <h2>{job.jobid}</h2> */}
             <div dangerouslySetInnerHTML={{ __html: cleanHTML }} />
-            <a className={styles.url} href={job.url} target="_blank" rel="noopener noreferrer">Apply Now </a>
         </div>
     );
 }
